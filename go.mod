@@ -1,3 +1,3 @@
-module cracking
+module cic
 
 go 1.13
