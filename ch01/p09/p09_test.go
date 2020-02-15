@@ -2,7 +2,7 @@ package p09
 
 import "testing"
 
-func TestIsRotatedMatrix(t *testing.T) {
+func TestIsRotatedString(t *testing.T) {
 	type args struct {
 		s1 string
 		s2 string
@@ -30,7 +30,7 @@ func TestIsRotatedMatrix(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := IsRotatedMatrix(tt.args.s1, tt.args.s2); got != tt.want {
+			if got := IsRotatedString(tt.args.s1, tt.args.s2); got != tt.want {
 				t.Errorf("IsRotatedMatrix() = %v, want %v", got, tt.want)
 			}
 		})
