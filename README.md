@@ -7,5 +7,5 @@ I read Japanese version of CCI.
 - Japanese: https://book.mynavi.jp/supportsite/detail/9784839960100.html
 - Original: http://www.crackingthecodinginterview.com
 
-## Solution
+## Solution by others
 https://github.com/careercup/CtCI-6th-Edition
