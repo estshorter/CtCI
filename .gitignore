@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 
 # Created by https://www.gitignore.io/api/go,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=go,visualstudiocode
 
 ### Go ###
-=======
->>>>>>> origin/master
 # Binaries for programs and plugins
 *.exe
 *.exe~
@@ -21,7 +18,6 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
-<<<<<<< HEAD
 
 ### Go Patch ###
 /vendor/
@@ -39,5 +35,3 @@
 .history
 
 # End of https://www.gitignore.io/api/go,visualstudiocode
-=======
->>>>>>> origin/master
