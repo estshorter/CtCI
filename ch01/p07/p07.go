@@ -1,7 +1,8 @@
 package p07
 
 // RotateMatrix rotate matrix
-func RotateMatrix(mat [][]int, n int, positiveRotation bool) [][]int {
+func RotateMatrix(mat [][]int, positiveRotation bool) [][]int {
+	n := len(mat)
 	for layer := 0; layer < n/2; layer++ {
 		for i := 0; i < n-2*layer-1; i++ {
 			top := &mat[layer][layer+i]
