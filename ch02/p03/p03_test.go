@@ -34,10 +34,10 @@ func equal(l1 *list.List, l2 *list.List) bool {
 }
 
 func TestDeleteElement(t *testing.T) {
-	l1 := list.NewWithSlice([]int{3, 5, 1, 100, 10})
+	l1 := list.InitBySlice([]int{3, 5, 1, 100, 10})
 	e := l1.GetElement(2)
 
-	l2 := list.NewWithSlice([]int{3, 5, 100, 10})
+	l2 := list.InitBySlice([]int{3, 5, 100, 10})
 	type args struct {
 		l    *list.List
 		mark *list.Element

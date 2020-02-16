@@ -22,8 +22,8 @@ func New() *List {
 	return &List{dummy: dummy}
 }
 
-//NewWithSlice returns an initialized list.
-func NewWithSlice(s []int) *List {
+//InitBySlice returns an initialized list.
+func InitBySlice(s []int) *List {
 	dummy := &Element{}
 	dummy.Prev = dummy
 	dummy.Next = dummy

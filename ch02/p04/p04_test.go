@@ -36,8 +36,8 @@ func equal(l1 *list.List, l2 *list.List) bool {
 func TestPartition(t *testing.T) {
 	a1 := [...]int{3, 5, 10, 5, 8, 2, 1}
 	a2 := [...]int{3, 2, 1, 5, 10, 5, 8}
-	l1 := list.NewWithSlice(a1[:])
-	l2 := list.NewWithSlice(a2[:])
+	l1 := list.InitBySlice(a1[:])
+	l2 := list.InitBySlice(a2[:])
 
 	type args struct {
 		l *list.List

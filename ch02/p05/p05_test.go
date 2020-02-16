@@ -35,8 +35,8 @@ func equal(l1 *list.List, l2 *list.List) bool {
 }
 
 func Test_listToInt(t *testing.T) {
-	l1 := list.NewWithSlice([]int{0, 3, 5})
-	l2 := list.NewWithSlice([]int{4, 3, 2, 1})
+	l1 := list.InitBySlice([]int{0, 3, 5})
+	l2 := list.InitBySlice([]int{4, 3, 2, 1})
 	type args struct {
 		l *list.List
 	}
@@ -58,9 +58,9 @@ func Test_listToInt(t *testing.T) {
 }
 
 func Test_intToList(t *testing.T) {
-	l1 := list.NewWithSlice([]int{0, 3, 5})
-	l2 := list.NewWithSlice([]int{4, 3, 2, 1})
-	l3 := list.NewWithSlice([]int{0})
+	l1 := list.InitBySlice([]int{0, 3, 5})
+	l2 := list.InitBySlice([]int{4, 3, 2, 1})
+	l3 := list.InitBySlice([]int{0})
 	type args struct {
 		i int
 	}
@@ -83,9 +83,9 @@ func Test_intToList(t *testing.T) {
 }
 
 func TestSum(t *testing.T) {
-	l1 := list.NewWithSlice([]int{0, 3, 5})
-	l2 := list.NewWithSlice([]int{4, 3, 2, 1})
-	l3 := list.NewWithSlice([]int{4, 6, 7, 1})
+	l1 := list.InitBySlice([]int{0, 3, 5})
+	l2 := list.InitBySlice([]int{4, 3, 2, 1})
+	l3 := list.InitBySlice([]int{4, 6, 7, 1})
 
 	type args struct {
 		l1 *list.List
@@ -108,8 +108,8 @@ func TestSum(t *testing.T) {
 }
 
 func Test_listToIntReverse(t *testing.T) {
-	l1 := list.NewWithSlice([]int{5, 3, 0})
-	l2 := list.NewWithSlice([]int{1, 2, 3, 4})
+	l1 := list.InitBySlice([]int{5, 3, 0})
+	l2 := list.InitBySlice([]int{1, 2, 3, 4})
 	type args struct {
 		l *list.List
 	}
@@ -131,9 +131,9 @@ func Test_listToIntReverse(t *testing.T) {
 }
 
 func Test_intToListReverse(t *testing.T) {
-	l1 := list.NewWithSlice([]int{5, 3, 0})
-	l2 := list.NewWithSlice([]int{1, 2, 3, 4})
-	l3 := list.NewWithSlice([]int{0})
+	l1 := list.InitBySlice([]int{5, 3, 0})
+	l2 := list.InitBySlice([]int{1, 2, 3, 4})
+	l3 := list.InitBySlice([]int{0})
 	type args struct {
 		i int
 	}
@@ -156,9 +156,9 @@ func Test_intToListReverse(t *testing.T) {
 }
 
 func TestSumReverse(t *testing.T) {
-	l1 := list.NewWithSlice([]int{5, 3, 0})
-	l2 := list.NewWithSlice([]int{1, 2, 3, 4})
-	l3 := list.NewWithSlice([]int{1, 7, 6, 4})
+	l1 := list.InitBySlice([]int{5, 3, 0})
+	l2 := list.InitBySlice([]int{1, 2, 3, 4})
+	l3 := list.InitBySlice([]int{1, 7, 6, 4})
 
 	type args struct {
 		l1 *list.List
