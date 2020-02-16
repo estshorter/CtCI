@@ -22,15 +22,25 @@ func New() *List {
 	return &List{dummy: dummy}
 }
 
+//NewWithSlice returns an initialized list.
+func NewWithSlice(s []int) *List {
+	dummy := &Element{}
+	dummy.Prev = dummy
+	dummy.Next = dummy
+	l := &List{dummy: dummy}
+	l.PushBackSlice(s)
+	return l
+}
+
 //PushBack inserts a new element e with value v at the back of list l and returns e.
 func (l *List) PushBack(v int) *Element {
-	e := l.InsertBefore(v, l.getElement(l.N+1))
+	e := l.InsertBefore(v, l.GetElement(l.N+1))
 	return e
 }
 
 //PushBackElement inserts an existing element at the back of list l and returns e.
 func (l *List) PushBackElement(e *Element) *Element {
-	l.InsertBeforeElement(e, l.getElement(l.N+1))
+	l.InsertBeforeElement(e, l.GetElement(l.N+1))
 	return e
 }
 
@@ -41,9 +51,18 @@ func (l *List) PushBackList(l2 *List) {
 	l.Dummy().Prev.Next = l2.Dummy().Next
 	l2.Dummy().Prev.Next = l.Dummy()
 	l.Dummy().Prev = l2.Dummy().Prev
+	l.N += l2.N
 }
 
-func (l *List) getElement(i int) *Element {
+//PushBackSlice inserts a slice at the back of list l.
+func (l *List) PushBackSlice(s []int) {
+	for _, v := range s {
+		l.PushBack(v)
+	}
+}
+
+//GetElement returns ith element
+func (l *List) GetElement(i int) *Element {
 	var e *Element
 	if i < l.N/2 {
 		e = l.dummy.Next
@@ -81,12 +100,12 @@ func (l *List) InsertBeforeElement(e *Element, mark *Element) *Element {
 
 //Front returns the first element of list.
 func (l *List) Front() *Element {
-	return l.getElement(0)
+	return l.GetElement(0)
 }
 
 // Back returns the last element of list l.
 func (l *List) Back() *Element {
-	return l.getElement(l.Len() - 1)
+	return l.GetElement(l.Len() - 1)
 }
 
 // Dummy returns dummy element

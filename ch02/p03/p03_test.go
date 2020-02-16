@@ -34,19 +34,10 @@ func equal(l1 *list.List, l2 *list.List) bool {
 }
 
 func TestDeleteElement(t *testing.T) {
-	l1 := list.New()
-	l1.PushBack(3)
-	l1.PushBack(5)
-	e3 := l1.PushBack(1)
-	l1.PushBack(100)
-	l1.PushBack(10)
+	l1 := list.NewWithSlice([]int{3, 5, 1, 100, 10})
+	e := l1.GetElement(2)
 
-	l2 := list.New()
-	l2.PushBack(3)
-	l2.PushBack(5)
-	l2.PushBack(100)
-	l2.PushBack(10)
-
+	l2 := list.NewWithSlice([]int{3, 5, 100, 10})
 	type args struct {
 		l    *list.List
 		mark *list.Element
@@ -56,7 +47,7 @@ func TestDeleteElement(t *testing.T) {
 		args args
 		want *list.List
 	}{
-		{"0", args{l1, e3}, l2},
+		{"0", args{l1, e}, l2},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
