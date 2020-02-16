@@ -4,13 +4,13 @@ import (
 	"ctci/container/list"
 )
 
-// Partition implements ch02-p04
+// Partition solves ch02-p04
 func Partition(l *list.List, x int) *list.List {
 	head := list.New()
 	tail := list.New()
 
 	var eNext *list.Element
-	for e := l.Front(); e != l.Dummy(); e = eNext {
+	for e := l.Front(); !l.IsConsumed(e); e = eNext {
 		eNext = e.Next
 		if e.Value < x {
 			head.PushBackElement(e)

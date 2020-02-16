@@ -32,25 +32,30 @@ func NewWithSlice(s []int) *List {
 	return l
 }
 
+//IsConsumed returns true if e is dummy element
+func (l *List) IsConsumed(e *Element) bool {
+	return e == l.dummy
+}
+
 //PushBack inserts a new element e with value v at the back of list l and returns e.
 func (l *List) PushBack(v int) *Element {
-	e := l.InsertBefore(v, l.GetElement(l.N+1))
+	e := l.InsertBefore(v, l.GetElement(l.N))
 	return e
 }
 
 //PushBackElement inserts an existing element at the back of list l and returns e.
 func (l *List) PushBackElement(e *Element) *Element {
-	l.InsertBeforeElement(e, l.GetElement(l.N+1))
+	l.InsertBeforeElement(e, l.GetElement(l.N))
 	return e
 }
 
 //PushBackList inserts an existing List l2 at the back of list l.
 //l2 must not be used after this.
 func (l *List) PushBackList(l2 *List) {
-	l2.Dummy().Next.Prev = l.Dummy().Prev
-	l.Dummy().Prev.Next = l2.Dummy().Next
-	l2.Dummy().Prev.Next = l.Dummy()
-	l.Dummy().Prev = l2.Dummy().Prev
+	l2.dummy.Next.Prev = l.dummy.Prev
+	l.dummy.Prev.Next = l2.dummy.Next
+	l2.dummy.Prev.Next = l.dummy
+	l.dummy.Prev = l2.dummy.Prev
 	l.N += l2.N
 }
 
@@ -106,11 +111,6 @@ func (l *List) Front() *Element {
 // Back returns the last element of list l.
 func (l *List) Back() *Element {
 	return l.GetElement(l.Len() - 1)
-}
-
-// Dummy returns dummy element
-func (l *List) Dummy() *Element {
-	return l.dummy
 }
 
 //Len returns the number of elements of list l. The complexity is O(1).
