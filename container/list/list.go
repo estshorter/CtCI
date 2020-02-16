@@ -28,6 +28,21 @@ func (l *List) PushBack(v int) *Element {
 	return e
 }
 
+//PushBackElement inserts an existing element at the back of list l and returns e.
+func (l *List) PushBackElement(e *Element) *Element {
+	l.InsertBeforeElement(e, l.getElement(l.N+1))
+	return e
+}
+
+//PushBackList inserts an existing List l2 at the back of list l.
+//l2 must not be used after this.
+func (l *List) PushBackList(l2 *List) {
+	l2.Dummy().Next.Prev = l.Dummy().Prev
+	l.Dummy().Prev.Next = l2.Dummy().Next
+	l2.Dummy().Prev.Next = l.Dummy()
+	l.Dummy().Prev = l2.Dummy().Prev
+}
+
 func (l *List) getElement(i int) *Element {
 	var e *Element
 	if i < l.N/2 {
@@ -54,20 +69,24 @@ func (l *List) InsertBefore(v int, mark *Element) *Element {
 	return e
 }
 
+//InsertBeforeElement InsertBefore inserts an existing element e immediately before mark and returns e.
+func (l *List) InsertBeforeElement(e *Element, mark *Element) *Element {
+	e.Prev = mark.Prev
+	e.Next = mark
+	e.Next.Prev = e
+	e.Prev.Next = e
+	l.N++
+	return e
+}
+
 //Front returns the first element of list.
 func (l *List) Front() *Element {
-	if l.N > 0 {
-		return l.getElement(1)
-	}
-	return l.dummy
+	return l.getElement(0)
 }
 
 // Back returns the last element of list l.
 func (l *List) Back() *Element {
-	if l.N > 0 {
-		return l.getElement(l.Len())
-	}
-	return l.dummy
+	return l.getElement(l.Len() - 1)
 }
 
 // Dummy returns dummy element
