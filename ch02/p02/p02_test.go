@@ -30,13 +30,43 @@ func Test_findLastKElement(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := findLastKElement(tt.args.l, tt.args.k)
+			got, err := FindLastKElement(tt.args.l, tt.args.k)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("findLastKElement() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
 			if !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("findLastKElement() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestFindLastKElement2(t *testing.T) {
+	l1 := list.New()
+	l1.PushBack(3)
+	l1.PushBack(5)
+	e3 := l1.PushBack(1)
+	l1.PushBack(100)
+	e5 := l1.PushBack(10)
+
+	type args struct {
+		l *list.List
+		k int
+	}
+	tests := []struct {
+		name string
+		args args
+		want *list.Element
+	}{
+		{"0", args{l1, 0}, e5},
+		{"2", args{l1, 2}, e3},
+		{"error", args{l1, 20}, nil},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := FindLastKElement2(tt.args.l, tt.args.k); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("FindLastKElement2() = %v, want %v", got, tt.want)
 			}
 		})
 	}
