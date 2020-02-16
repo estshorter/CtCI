@@ -12,17 +12,25 @@ func equal(l1 *list.List, l2 *list.List) bool {
 		return false
 	}
 
+	v1 := make([]int, l1.Len())
+	v2 := make([]int, l2.Len())
+
 	e1 := l1.Front()
 	e2 := l2.Front()
+
+	equal := true
 	for i := 0; i < l1.Len(); i++ {
+		v1[i] = e1.Value
+		v2[i] = e2.Value
+
 		if e1.Value != e2.Value {
-			fmt.Printf("wrong value: got %v, want %v\n", e1.Value, e2.Value)
-			return false
+			equal = false
 		}
 		e1 = e1.Next
 		e2 = e2.Next
 	}
-	return true
+	fmt.Printf("got %v, want %v\n", v1, v2)
+	return equal
 }
 
 func TestDeleteElement(t *testing.T) {
