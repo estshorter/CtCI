@@ -17,7 +17,12 @@ func (s *Stack) Len() int {
 
 // Push pushes a value v to a stack
 func (s *Stack) Push(v int) {
-	s.a = append(s.a, v)
+	// s.a = append(s.a, v)
+	if len(s.a)+1 >= cap(s.a) {
+		s.resize()
+	}
+	s.a = s.a[:len(s.a)+1]
+	s.a[len(s.a)-1] = v
 }
 
 // Pop pops a value v from a stack
