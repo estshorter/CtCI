@@ -54,14 +54,10 @@ func intToListReverse(i int) *list.List {
 		return l
 	}
 
-	var buf []int
 	for i != 0 {
 		q, r := divmod(i, 10)
-		buf = append(buf, r)
+		l.PushFront(r)
 		i = q
-	}
-	for j := len(buf) - 1; j >= 0; j-- {
-		l.PushBack(buf[j])
 	}
 	return l
 }

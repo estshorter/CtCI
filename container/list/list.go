@@ -37,6 +37,12 @@ func (l *List) IsConsumed(e *Element) bool {
 	return e == l.dummy
 }
 
+//PushFront inserts a new element e with value v at the front of list l and returns e.
+func (l *List) PushFront(v int) *Element {
+	e := l.InsertBefore(v, l.GetElement(0))
+	return e
+}
+
 //PushBack inserts a new element e with value v at the back of list l and returns e.
 func (l *List) PushBack(v int) *Element {
 	e := l.InsertBefore(v, l.GetElement(l.N))
