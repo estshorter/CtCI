@@ -8,10 +8,10 @@ import (
 )
 
 func equal(l1 *list.List, l2 *list.List) bool {
-	if l1.Len() != l2.Len() {
-		fmt.Printf("wrong length: got %v, want %v\n", l1.Len(), l2.Len())
-		return false
-	}
+	// if l1.Len() != l2.Len() {
+	// 	fmt.Printf("wrong length: got %v, want %v\n", l1.Len(), l2.Len())
+	// 	return false
+	// }
 
 	v1 := make([]int, l1.Len())
 	v2 := make([]int, l2.Len())
@@ -176,6 +176,56 @@ func TestSumReverse(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := SumReverse(tt.args.l1, tt.args.l2); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("SumReverse() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_addLists(t *testing.T) {
+	l1 := list.InitBySlice([]int{0, 0, 5})
+	l2 := list.InitBySlice([]int{0, 0, 5})
+	l3 := list.InitBySlice([]int{0, 0, 0, 1})
+
+	type args struct {
+		l1 *list.List
+		l2 *list.List
+	}
+	tests := []struct {
+		name string
+		args args
+		want *list.List
+	}{
+		{"case1", args{l1, l2}, l3},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := addLists(tt.args.l1, tt.args.l2); !equal(got, tt.want) {
+				t.Errorf("addLists() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_addListsAdvanced(t *testing.T) {
+	l1 := list.InitBySlice([]int{9, 5, 3, 0})
+	l2 := list.InitBySlice([]int{1, 2, 3, 4})
+	l3 := list.InitBySlice([]int{1, 0, 7, 6, 4})
+
+	type args struct {
+		l1 *list.List
+		l2 *list.List
+	}
+	tests := []struct {
+		name string
+		args args
+		want *list.List
+	}{
+		{"case1", args{l1, l2}, l3},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := addListsAdvanced(tt.args.l1, tt.args.l2); !equal(got, tt.want) {
+				t.Errorf("addListsAdvanced() = %v, want %v", got, tt.want)
 			}
 		})
 	}
