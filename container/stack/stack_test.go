@@ -29,7 +29,7 @@ func TestStack(t *testing.T) {
 	}
 }
 
-func Test(t *testing.T) {
+func TestCapSize(t *testing.T) {
 	a := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
 	s := New()
 	for _, val := range a {
