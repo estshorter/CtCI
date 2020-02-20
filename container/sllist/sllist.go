@@ -9,7 +9,7 @@ type Element struct {
 	Next  *Element
 }
 
-//List represents a doubly linked list.
+//List represents a singly linked list.
 type List struct {
 	head *Element
 	tail *Element
@@ -47,6 +47,19 @@ func (l *List) PushFront(v int) *Element {
 //PushBack inserts a new element e with value v at the back of list l and returns e.
 func (l *List) PushBack(v int) *Element {
 	return l.PushBackElement(&Element{v, nil})
+}
+
+//PushBackLoop inserts a new element e pointing the element whose number equals eNum
+func (l *List) PushBackLoop(v int, eNum int) *Element {
+	e := &Element{v, l.GetElement(eNum)}
+	if l.N == 0 {
+		panic("size is zero")
+	} else {
+		l.tail.Next = e
+	}
+	l.tail = e
+	l.N++
+	return e
 }
 
 //PushBackElement inserts an existing element at the back of list l and returns e.
