@@ -41,6 +41,19 @@ func (s *Stack) resize() {
 	s.a = b
 }
 
+// IsEmpty returns true if stack size equal zero otherwise returns false
+func (s *Stack) IsEmpty() bool {
+	if len(s.a) == 0 {
+		return true
+	}
+	return false
+}
+
+// Peek return the last-in element
+func (s *Stack) Peek() int {
+	return s.a[len(s.a)-1]
+}
+
 func max(x, y int) int {
 	if x < y {
 		return y

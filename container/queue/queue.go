@@ -17,6 +17,19 @@ func (q *Queue) Len() int {
 	return q.n
 }
 
+// IsEmpty returns true if queue size equal zero otherwise returns false
+func (q *Queue) IsEmpty() bool {
+	if q.n == 0 {
+		return true
+	}
+	return false
+}
+
+// Peek return the first-in element
+func (q *Queue) Peek() int {
+	return q.a[q.j]
+}
+
 // Enqueue set a value v to the last of Queue
 func (q *Queue) Enqueue(v int) {
 	if q.n+1 > cap(q.a) {
