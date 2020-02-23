@@ -2,7 +2,6 @@ package graph
 
 import (
 	"ctci/container/stack"
-	"fmt"
 )
 
 // Vertex defines a vertex of a graph
@@ -28,7 +27,6 @@ func New(n int, edges [][]int) *Graph {
 		out := edge[1]
 		adj[in].Push(out)
 	}
-	fmt.Println(vertexes, adj)
 	return &Graph{vertexes, adj}
 }
 
@@ -73,4 +71,9 @@ func (g *Graph) InEdges(i int) []int {
 		}
 	}
 	return edges
+}
+
+// NumVertexes returns number of vertexes of a graph
+func (g *Graph) NumVertexes() int {
+	return len(g.vertexes)
 }
