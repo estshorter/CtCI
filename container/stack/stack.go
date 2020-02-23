@@ -15,24 +15,49 @@ func (s *Stack) Len() int {
 	return len(s.a)
 }
 
-// Push pushes a value v to a stack
-func (s *Stack) Push(v int) {
-	// s.a = append(s.a, v)
+// Get returns ith element of stack
+func (s *Stack) Get(i int) int {
+	return s.a[i]
+}
+
+// Set sets a value to ith elment of stack
+func (s *Stack) Set(i, val int) {
+	s.a[i] = val
+}
+
+// Add adds a value v to a stack
+func (s *Stack) Add(i, v int) {
 	if len(s.a)+1 > cap(s.a) {
 		s.resize()
 	}
 	s.a = s.a[:len(s.a)+1]
-	s.a[len(s.a)-1] = v
+	for j := len(s.a) - 1; j > i; j-- {
+		s.a[j] = s.a[j-1]
+	}
+	s.a[i] = v
 }
 
-// Pop pops a value v from a stack
-func (s *Stack) Pop() int {
-	v := s.a[len(s.a)-1]
+// Remove removes a value v from a stack
+func (s *Stack) Remove(i int) int {
+	v := s.a[i]
+	for j := i; j < len(s.a)-1; j++ {
+		s.a[j] = s.a[j+1]
+	}
 	s.a = s.a[:len(s.a)-1]
 	if cap(s.a) >= 3*len(s.a) {
 		s.resize()
 	}
 	return v
+}
+
+// Push pushes a value v to a stack
+func (s *Stack) Push(v int) {
+	s.Add(s.Len(), v)
+}
+
+// Pop pops a value v from a stack
+func (s *Stack) Pop() int {
+	return s.Remove(s.Len() - 1)
 }
 
 func (s *Stack) resize() {
