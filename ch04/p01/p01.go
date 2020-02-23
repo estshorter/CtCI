@@ -12,9 +12,7 @@ func bfs(i, j int, g *graph.Graph) bool {
 	q.Enqueue(i)
 	seen[i] = true
 	for !q.IsEmpty() {
-		k := q.Dequeue()
-		edges := g.OutEdges(k)
-		for _, edge := range edges {
+		for _, edge := range g.OutEdges(q.Dequeue()) {
 			if edge == j {
 				return true
 			} else if !seen[edge] {
@@ -32,9 +30,7 @@ func dfs(i, j int, g *graph.Graph) bool {
 	s.Push(i)
 	seen[i] = true
 	for !s.IsEmpty() {
-		r := s.Pop()
-		edges := g.OutEdges(r)
-		for _, edge := range edges {
+		for _, edge := range g.OutEdges(s.Pop()) {
 			if edge == j {
 				return true
 			} else if !seen[edge] {
@@ -44,4 +40,23 @@ func dfs(i, j int, g *graph.Graph) bool {
 		}
 	}
 	return false
+}
+
+func dfsRecursive(i, j int, g *graph.Graph, seen []bool) bool {
+	seen[i] = true
+	for _, edge := range g.OutEdges(i) {
+		if edge == j {
+			return true
+		} else if !seen[edge] {
+			if dfsRecursive(edge, j, g, seen) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func dfs2(i, j int, g *graph.Graph) bool {
+	seen := make([]bool, g.NumVertexes())
+	return dfsRecursive(i, j, g, seen)
 }
