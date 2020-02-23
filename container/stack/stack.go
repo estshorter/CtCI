@@ -25,6 +25,16 @@ func (s *Stack) Set(i, val int) {
 	s.a[i] = val
 }
 
+// Contain returns true if a stack contains a value v otherwise returns false
+func (s *Stack) Contain(v int) bool {
+	for _, val := range s.a {
+		if val == v {
+			return true
+		}
+	}
+	return false
+}
+
 // Add adds a value v to a stack
 func (s *Stack) Add(i, v int) {
 	if len(s.a)+1 > cap(s.a) {
