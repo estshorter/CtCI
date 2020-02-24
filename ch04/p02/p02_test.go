@@ -16,12 +16,12 @@ func TestCreateMinimalBST(t *testing.T) {
 		s []int
 	}
 	tr := &tree.Tree{Value: 4}
-	tr = tree.Insert(tr, 2)
-	tr = tree.Insert(tr, 6)
-	tr = tree.Insert(tr, 1)
-	tr = tree.Insert(tr, 3)
-	tr = tree.Insert(tr, 5)
-	tr = tree.Insert(tr, 7)
+	tr.Insert(2)
+	tr.Insert(6)
+	tr.Insert(1)
+	tr.Insert(3)
+	tr.Insert(5)
+	tr.Insert(7)
 
 	tests := []struct {
 		name string

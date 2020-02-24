@@ -6,20 +6,42 @@ import (
 
 //A Tree is a binary tree with integer values.
 type Tree struct {
-	Left  *Tree
-	Value int
-	Right *Tree
+	Parent *Tree
+	Left   *Tree
+	Value  int
+	Right  *Tree
 }
 
 // Insert inserts a new value to a tree
-func Insert(t *Tree, v int) *Tree {
+func (t *Tree) Insert(v int) {
+	t.insertRecursive(v)
+}
+
+func (t *Tree) insertRecursive(v int) *Tree {
 	if t == nil {
-		return &Tree{nil, v, nil}
+		return &Tree{nil, nil, v, nil}
 	}
 	if v < t.Value {
-		t.Left = Insert(t.Left, v)
+		t.Left = t.Left.insertRecursive(v)
 	} else {
-		t.Right = Insert(t.Right, v)
+		t.Right = t.Right.insertRecursive(v)
+	}
+	return t
+}
+
+// InsertWithParent inserts a new value to a tree and specifies a parent tree
+func (t *Tree) InsertWithParent(v int) {
+	t.insertWithParentRecursive(v, nil)
+}
+
+func (t *Tree) insertWithParentRecursive(v int, p *Tree) *Tree {
+	if t == nil {
+		return &Tree{p, nil, v, nil}
+	}
+	if v < t.Value {
+		t.Left = t.Left.insertWithParentRecursive(v, t)
+	} else {
+		t.Right = t.Right.insertWithParentRecursive(v, t)
 	}
 	return t
 }

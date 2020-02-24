@@ -7,16 +7,15 @@ import (
 
 func TestIsBalanced(t *testing.T) {
 	tr := &tree.Tree{Value: 4}
-	tr = tree.Insert(tr, 2)
-	tr = tree.Insert(tr, 6)
-	tr = tree.Insert(tr, 1)
-	tr = tree.Insert(tr, 3)
-	// tr = tree.Insert(tr, 5)
-	tr = tree.Insert(tr, 7)
+	tr.Insert(2)
+	tr.Insert(6)
+	tr.Insert(1)
+	tr.Insert(3)
+	tr.Insert(7)
 
 	tr2 := &tree.Tree{Value: 0}
 	for i := 0; i < 6; i++ {
-		tr2 = tree.Insert(tr2, i+1)
+		tr2.Insert(i + 1)
 	}
 
 	type args struct {
