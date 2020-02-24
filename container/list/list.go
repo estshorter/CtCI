@@ -1,5 +1,7 @@
 package list
 
+import "fmt"
+
 //Element is an element of a linked list.
 type Element struct {
 	// The value stored with this element.
@@ -63,6 +65,13 @@ func (l *List) PushBackList(l2 *List) {
 	l2.dummy.Prev.Next = l.dummy
 	l.dummy.Prev = l2.dummy.Prev
 	l.N += l2.N
+}
+
+//PushBackListSafe inserts an existing List l2 at the back of list l.
+func (l *List) PushBackListSafe(other *List) {
+	for e := other.Front(); !other.IsConsumed(e); e = e.Next {
+		l.PushBack(e.Value)
+	}
 }
 
 //PushBackSlice inserts a slice at the back of list l.
@@ -131,4 +140,12 @@ func (l *List) Remove(e *Element) {
 	e.Next = nil
 	e.Prev = nil
 	l.N--
+}
+
+func (l *List) String() string {
+	a := make([]int, l.Len())
+	for i, e := 0, l.Front(); !l.IsConsumed(e); i, e = i+1, e.Next {
+		a[i] = e.Value
+	}
+	return fmt.Sprintf("%v", a)
 }
