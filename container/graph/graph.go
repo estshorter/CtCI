@@ -62,6 +62,11 @@ func (g *Graph) OutEdges(i int) []int {
 	return edges
 }
 
+// NumOutEdges returns number of edges which point from a vertex i
+func (g *Graph) NumOutEdges(i int) int {
+	return g.adj[i].Len()
+}
+
 // InEdges returns edges which point a vertex i
 func (g *Graph) InEdges(i int) []int {
 	var edges []int

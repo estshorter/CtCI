@@ -15,6 +15,11 @@ func (s *Stack) Len() int {
 	return len(s.a)
 }
 
+// Slice returns slice of a stack
+func (s *Stack) Slice() []int {
+	return s.a
+}
+
 // Get returns ith element of stack
 func (s *Stack) Get(i int) int {
 	return s.a[i]
