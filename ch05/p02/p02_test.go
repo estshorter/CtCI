@@ -19,7 +19,7 @@ func Test_printBinary(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := printBinary(tt.args.v); got != tt.want {
+			if got := PrintBinary(tt.args.v); got != tt.want {
 				t.Errorf("printBinary() = %v, want %v", got, tt.want)
 			}
 		})
