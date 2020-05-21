@@ -8,8 +8,6 @@ func subset(a []string) []string {
 	ret := make([]string, 2*len(subsub))
 	for i := 0; i < len(subsub); i++ {
 		ret[i] = subsub[i]
-	}
-	for i := 0; i < len(subsub); i++ {
 		ret[i+len(subsub)] = subsub[i] + a[len(a)-1]
 	}
 	return ret
