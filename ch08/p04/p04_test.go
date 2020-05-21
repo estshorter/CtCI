@@ -14,7 +14,7 @@ func Test_subset(t *testing.T) {
 		args args
 		want []string
 	}{
-		{"1", args{[]string{"a", "b", "c"}}, []string{"a", "ab", "b", "ac", "abc", "bc", "c"}},
+		{"1", args{[]string{"a", "b", "c"}}, []string{"", "a", "b", "ab", "c", "ac", "bc", "abc"}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
