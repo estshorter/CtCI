@@ -1,4 +1,4 @@
-package p06
+package p07
 
 func count(a []int) []int {
 	maxInt8 := 127
